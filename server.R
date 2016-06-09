@@ -28,7 +28,7 @@ shinyServer(function(input, output, session) {
       addPolygons(data=AralSea, weight=2, col="gray", group = "Aral Sea (late 1950s)") %>%
       addCircles(lng = nuclearSites$Lon, 
                  lat = nuclearSites$Lat, 
-                 fillColor = "yellow", color = "yellow",  
+                 fillColor = "yellow", color = "blue",  
                  weight = 3, radius = 10000, 
                  popup = paste(#"<b>Country:</b>", nuclearSites$Country, "<br>",
                                #"<b>Location:</b>", nuclearSites$Location,"<br>",
