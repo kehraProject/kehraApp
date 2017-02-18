@@ -28,7 +28,7 @@ shinyServer(function(input, output, session) {
       addPolygons(data=AralSea, weight=2, col="gray", group = "Aral Sea (late 1950s)") %>%
       addCircles(lng = nuclearSites$Lon,
                  lat = nuclearSites$Lat,
-                 fillColor = "yellow", color = "blue",
+                 fillColor = "yellow", color = "yellow",
                  weight = 3, radius = 10000,
                  popup = paste(#"<b>Country:</b>", nuclearSites$Country, "<br>",
                                #"<b>Location:</b>", nuclearSites$Location,"<br>",
@@ -46,7 +46,7 @@ shinyServer(function(input, output, session) {
                  group = "Sleeping Towns") %>%
       addCircles(lng = mineralResources$Longitude,
                  lat = mineralResources$Latitude,
-                 fillColor = "brown", color = "brown",
+                 fillColor = "grey", color = "grey",
                  weight = 3, radius = 10000,
                  popup = paste("<b>Site name:</b>", mineralResources$SITE_NAME,
                                "<br>",
@@ -66,9 +66,22 @@ shinyServer(function(input, output, session) {
                  popup = paste("<b>",populatedPlaces$NAME, "</b><br>",
                                "Max population:", populatedPlaces$POP_MAX),
                  group = "Populated places") %>%
+      addCircles(lng = AirPollutionStationsEngland$Longitude,
+                 lat = AirPollutionStationsEngland$Latitude,
+                 fillColor = "brown", color = "brown",
+                 weight = 3, radius = 2500,
+                 popup = paste("<b>",
+                               "Station name:", AirPollutionStationsEngland$Site.Name,
+                               "</b><br>",
+                               "Type:", AirPollutionStationsEngland$Environment.Type,
+                               "</b><br>",
+                               "Region:", AirPollutionStationsEngland$Region,
+                               "</b><br>",
+                               "Altitude:", AirPollutionStationsEngland$Altitude),
+                 group = "AirPollutionStations") %>%
       addCircles(lng = meteostationsKZ$Longitude,
                  lat = meteostationsKZ$Latitude,
-                 fillColor = "magenta", color = "magenta",
+                 fillColor = "blue", color = "blue",
                  weight = 3, radius = 10000,
                  popup = paste("<b>",
                                "Station name:", meteostationsKZ$Meteost_name,
@@ -90,7 +103,8 @@ shinyServer(function(input, output, session) {
                           "Sleeping Towns",
                           "Populated places",
                           "Mineral Resource Data System",
-                          "Meteostations"),
+                          "Meteostations",
+                          "AirPollutionStations"),
         #overlayGroups = c("Nuclear sites", "AWS", "Health Risk Spots"),
         options = layersControlOptions(collapsed = TRUE)
       ) %>%
@@ -98,7 +112,8 @@ shinyServer(function(input, output, session) {
                   "Admin Boundaries 1", #"Admin Boundaries 2"
                   "Aral Sea (late 1950s)", "Sleeping Towns",
                   "Mineral Resource Data System",
-                  "Meteostations"
+                  "Meteostations",
+                  "AirPollutionStations"
                   ))
   })
 

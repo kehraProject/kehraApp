@@ -14,6 +14,7 @@ AralSea <- readRDS("data/AralSea.rds")
 SleepingTowns <- readRDS("data/SleepingTowns.rds")
 mineralResources <- readRDS("data/mineralResources.rds")
 meteostationsKZ <- readRDS("data/meteostationsKZ.rds")
+AirPollutionStationsEngland <- readRDS("data/AirPollutionStationsEngland.rds")
 
 bbox <- data.frame("Name"=adm0@data$Code0,
                    "latmin"=c(40.417, 48.5),
